@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PasswordCheckerTest {
     private PasswordChecker checker;
@@ -137,4 +138,19 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.ERR_NO_MATCH, resultado);
     }
 
+    //TC15
+    @Test
+    public void checkSetMinLengthSuccessTC15(){
+        checker.setMinLength(8);
+        assertEquals(8, checker.getMinLength());
+    }
+
+    //TC16
+    @Test
+    public void checkSetMinLengthFailTC16(){
+        IllegalArgumentException error = assertThrows(IllegalArgumentException.class, () -> {
+            checker.setMinLength(-1);
+        });
+        assertEquals(PasswordChecker.ERR_INVALID_MIN_LENGTH, error.getMessage());
+    }
 }
