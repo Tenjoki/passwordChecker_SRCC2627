@@ -86,8 +86,41 @@ public class PasswordCheckerTest {
     // TC08: Dígitos habilitados pero contraseña sin dígitos
     @Test
     public void checkDigitsFailTC08(){
-        checker.setCheckDigits(true); //Inicializar el control (false por defecto)
+        checker.setCheckDigits(true);
         int resultado = checker.check("Abcdefgh", "Abcdefgh");
         assertEquals(PasswordChecker.ERR_DIGITS, resultado);
     }
+
+    // TC09: Minúsculas habilitadas y contraseña con minúsculas válidas
+    @Test
+    public void checkLowerCaseSuccessTC09(){
+        checker.setCheckLowers(true);
+        int resultado = checker.check("Abcdefg1", "Abcdefg1");
+        assertEquals(PasswordChecker.PASSWORD_OK, resultado);
+    }
+
+    // TC10: Minúsculas habilitadas pero contraseña sin minúsculas
+    @Test
+    public void checkLowerCaseFailTC10(){
+        checker.setCheckLowers(true);
+        int resultado = checker.check("ABCDEFGH1", "ABCDEFGH1");
+        assertEquals(PasswordChecker.ERR_LOWERS, resultado);
+    }
+
+    // TC11: Mayúsculas habilitadas y contraseña con mayúsculas válidas
+    @Test
+    public void checkUpperCaseSuccessTC11(){
+        checker.setCheckUppers(true);
+        int resultado = checker.check("Abcdefg1", "Abcdefg1");
+        assertEquals(PasswordChecker.PASSWORD_OK, resultado);
+    }
+
+    // TC12: Mayúsculas habilitadas pero contraseña sin mayúsculas
+    @Test
+    public void checkUpperCaseFailTC12(){
+        checker.setCheckUppers(true);
+        int resultado = checker.check("abcdefgh1", "abcdefgh1");
+        assertEquals(PasswordChecker.ERR_UPPERS, resultado);
+    }
+
 }
