@@ -172,5 +172,24 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.ERR_INVALID_MAX_LENGTH, error.getMessage());
     }
 
+    // TC19: Validación exitosa con la comprobación de dígitos desactivada por defecto
+    @Test
+    public void uncheckedDigitsSuccessTC19(){
+        int resultado = checker.check("Abcdefgh", "Abcdefgh");
+        assertEquals(PasswordChecker.PASSWORD_OK, resultado);
+    }
 
+    // TC20: Validación exitosa con la comprobación de minúsculas desactivada por defecto
+    @Test
+    public void uncheckedUppersSuccessTC20(){
+        int resultado = checker.check("ABCDEFGH1", "ABCDEFGH1");
+        assertEquals(PasswordChecker.PASSWORD_OK, resultado);
+    }
+
+    // TC21: Validación exitosa con la comprobación de mayúsculas desactivada por defecto
+    @Test
+    public void uncheckedLowersSuccessTC21(){
+        int resultado = checker.check("abcdefgh1", "abcdefgh1");
+        assertEquals(PasswordChecker.PASSWORD_OK, resultado);
+    }
 }
