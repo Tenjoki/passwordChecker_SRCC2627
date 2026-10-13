@@ -34,7 +34,7 @@ public class PasswordCheckerTest {
 
     // TC01: Contraseña válida por defecto (no vacía)
     @Test
-    public void checkBlankSuccessTC01(){
+    public void checkDefaultSuccessTC01(){
         int resultado = checker.check("Abcdefg1", "Abcdefg1");
         assertEquals(PasswordChecker.PASSWORD_OK, resultado);
     }
@@ -181,14 +181,14 @@ public class PasswordCheckerTest {
 
     // TC20: Validación exitosa con la comprobación de minúsculas desactivada por defecto
     @Test
-    public void uncheckedUppersSuccessTC20(){
+    public void uncheckedLowersSuccessTC20(){
         int resultado = checker.check("ABCDEFGH1", "ABCDEFGH1");
         assertEquals(PasswordChecker.PASSWORD_OK, resultado);
     }
 
     // TC21: Validación exitosa con la comprobación de mayúsculas desactivada por defecto
     @Test
-    public void uncheckedLowersSuccessTC21(){
+    public void uncheckedUppersSuccessTC21(){
         int resultado = checker.check("abcdefgh1", "abcdefgh1");
         assertEquals(PasswordChecker.PASSWORD_OK, resultado);
     }
