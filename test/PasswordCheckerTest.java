@@ -123,4 +123,18 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.ERR_UPPERS, resultado);
     }
 
+    // TC13: Contraseñas idénticas que coinciden correctamente
+    @Test
+    public void checkMatchSuccessTC13(){
+        int resultado = checker.check("Abcdefg1", "Abcdefg1");
+        assertEquals(PasswordChecker.PASSWORD_OK, resultado);
+    }
+
+    // TC14: Contraseñas diferentes que no coinciden
+    @Test
+    public void checkMatchFailTC14(){
+        int resultado = checker.check("Abcdefg1", "Other123");
+        assertEquals(PasswordChecker.ERR_NO_MATCH, resultado);
+    }
+
 }
