@@ -11,6 +11,16 @@ public class PasswordCheckerTest {
         checker = new PasswordChecker();
     }
 
+    //Descubrimos los límites de fábrica porque no se han indicado
+    @Test
+    public void discoverDefaultLimits(){
+        checker.getMinLength();
+        checker.getMaxLength();
+
+        System.out.println("Minimum length: " + checker.getMinLength());
+        System.out.println("Maximum length: " + checker.getMaxLength());
+    }
+
     // Validación de reglas básicas y códigos de error del metodo check()
     // (TC01 a TC14)
 
