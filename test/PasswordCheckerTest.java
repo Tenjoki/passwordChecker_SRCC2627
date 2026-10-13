@@ -71,6 +71,7 @@ public class PasswordCheckerTest {
     // TC06: Frontera superior inválida (21 caracteres)
     @Test
     public void checkLengthBeyondLimitTC06(){
+        checker.setMaxLength(20); // Forzamos un límite máximo para probar la frontera
         int resultado = checker.check(
                 "AbcdefghijAbcdefghi12", "AbcdefghijAbcdefghi12" );
         assertEquals(PasswordChecker.ERR_LENGTH, resultado);
