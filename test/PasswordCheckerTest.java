@@ -138,19 +138,39 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.ERR_NO_MATCH, resultado);
     }
 
-    //TC15
+    // TC15: Longitud mínima válida que se configura y recupera correctamente
     @Test
-    public void checkSetMinLengthSuccessTC15(){
+    public void setMinLengthSuccessTC15(){
         checker.setMinLength(8);
         assertEquals(8, checker.getMinLength());
     }
 
-    //TC16
+    // TC16: Longitud mínima inválida (< 0) que lanza IllegalArgumentException
     @Test
-    public void checkSetMinLengthFailTC16(){
+    public void setMinLengthFailTC16(){
         IllegalArgumentException error = assertThrows(IllegalArgumentException.class, () -> {
             checker.setMinLength(-1);
         });
         assertEquals(PasswordChecker.ERR_INVALID_MIN_LENGTH, error.getMessage());
     }
+
+    // TC17: Longitud máxima válida mayor que la mínima configurada correctamente
+    @Test
+    public void setMaxLengthSuccessTC17(){
+        checker.setMinLength(5);
+        checker.setMaxLength(20);
+        assertEquals(20, checker.getMaxLength());
+    }
+
+    // TC18: Longitud máxima inválida menor que la mínima que lanza IllegalArgumentException
+    @Test
+    public void setMaxLengthFailTC18(){
+        IllegalArgumentException error = assertThrows(IllegalArgumentException.class, () -> {
+            checker.setMinLength(8);
+            checker.setMaxLength(4);
+        });
+        assertEquals(PasswordChecker.ERR_INVALID_MAX_LENGTH, error.getMessage());
+    }
+
+
 }
