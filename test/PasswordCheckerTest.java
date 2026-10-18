@@ -139,6 +139,9 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.ERR_NO_MATCH, resultado);
     }
 
+    //Control de parámetros y excepciones en los setters
+    //(TC15 a TC18)
+
     // TC15: Longitud mínima válida que se configura y recupera correctamente
     @Test
     public void setMinLengthSuccessTC15(){
@@ -172,6 +175,9 @@ public class PasswordCheckerTest {
         });
         assertEquals(PasswordChecker.ERR_INVALID_MAX_LENGTH, error.getMessage());
     }
+
+    //Verificación de estados opcionales desactivados
+    // (TC19 a TC21)
 
     // TC19: Validación exitosa con la comprobación de dígitos desactivada por defecto
     @Test
